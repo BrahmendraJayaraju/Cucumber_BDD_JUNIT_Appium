@@ -12,13 +12,9 @@ import io.cucumber.junit.CucumberOptions;
         features = "src/test/resources/swaglabs/swaglabloginTest.feature",
         glue = {"stepdefinitions"},
         monochrome = true,
-        dryRun =false,
-
+        dryRun = false,
         tags="@REGRES",
         plugin = {"pretty","html:HTMLReport.html"}
 )
-
-
-
 public class Runner {
 }
