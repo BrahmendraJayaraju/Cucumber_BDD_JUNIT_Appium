@@ -3,14 +3,12 @@ package driver;
 import WebUtility.Utility;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.service.local.AppiumDriverLocalService;
 
 import java.net.URL;
-import java.time.Duration;
 import java.util.Map;
 
 public class DriverFactory {
@@ -21,125 +19,138 @@ public class DriverFactory {
 
         String execution = Utility.getValue(configPath, "execution");
         String platform = Utility.getValue(configPath, "platform");
-
         String localurl = Utility.getValue(configPath, "localurl");
-        String platformname = Utility.getValue(configPath, "platformname");
         String deviceid = Utility.getValue(configPath, "deviceid");
         String apppackage = Utility.getValue(configPath, "apppackage");
         String appactivity = Utility.getValue(configPath, "appactivity");
         String bundleid = Utility.getValue(configPath, "bundleid");
-        String sauceurl = Utility.getValue(configPath, "sauceurl");
-        String sauceusername = Utility.getValue(configPath, "sauce.username");
-        String sauceaccesskey = Utility.getValue(configPath, "sauce.accesskey");
 
-        System.out.println("Execution: " + execution);
-        System.out.println("Platform: " + platform);
-
-
-        // ---------- LOCAL ----------
         if (execution.equalsIgnoreCase("local")) {
 
+
+
+            // =========================
+            // LOCAL ANDROID
+            // =========================
             if (platform.equalsIgnoreCase("android")) {
 
                 UiAutomator2Options options = new UiAutomator2Options();
-                options.setPlatformName(platformname);
+
+                options.setPlatformName("Android");
+                options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
+                options.setUdid(deviceid);
+
+
+
+                // Always fresh install
                 options.setApp(System.getProperty("user.dir")
                         + "/Applications/Android/com.swaglabsmobileapp--12.apk");
 
-                options.setAppPackage(apppackage);
-                options.setAppActivity(appactivity);
-                options.setUdid(deviceid);
-                options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
+                options.setNoReset(true);
+                options.setFullReset(false);
+                options.setAppWaitActivity("*");
 
-                options.setCapability("ignoreHiddenApiPolicyError", true);
 
-                options.setFullReset(true);
+                options.setCapability("appium:forceAppLaunch", true);
 
-                options.setAppWaitDuration(Duration.ofSeconds(60));
-                options.setNewCommandTimeout(Duration.ofSeconds(40));
 
                 return new AndroidDriver(new URL(localurl), options);
-            } else if (platform.equalsIgnoreCase("ios")) {
+            }
+            // =========================
+            // LOCAL IOS
+            // =========================
+            else if (platform.equalsIgnoreCase("ios")) {
 
                 XCUITestOptions options = new XCUITestOptions();
 
-                options.setPlatformName("ios");
-                options.setBundleId(bundleid);
-                options.setUdid(deviceid);
+                options.setPlatformName("iOS");
                 options.setAutomationName(AutomationName.IOS_XCUI_TEST);
+                options.setUdid(deviceid);
 
 
-                String appPath = System.getProperty("user.dir") +
-                        "/Applications/ios/iOS-Simulator-MyRNDemoApp.1.3.0-162.zip";
-                options.setApp(appPath);
+                // Always fresh install
+                options.setApp(System.getProperty("user.dir")
+                        + "/Applications/ios/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip");
 
-                options.setFullReset(true);
+                options.setNoReset(true);
+                options.setFullReset(false);
 
 
                 return new IOSDriver(new URL(localurl), options);
             }
         }
 
-
-        // ---------- BROWSERSTACK ----------
+        // =========================
+        // BROWSERSTACK
+        // =========================
         else if (execution.equalsIgnoreCase("browserstack")) {
 
             String bsUrl = "https://hub.browserstack.com/wd/hub";
+
+            String bsUsername = Utility.getValue(configPath, "bs.username");
+            String bsAccessKey = Utility.getValue(configPath, "bs.accesskey");
+            String bsApp = Utility.getValue(configPath, "bs.app");
+            String bsDevice = Utility.getValue(configPath, "bs.device");
+            String bsVersion = Utility.getValue(configPath, "bs.osVersion");
+
+            String buildName = "Mobile-Build-" + System.currentTimeMillis();
+            String sessionName = "Thread-" + Thread.currentThread().getId();
 
             if (platform.equalsIgnoreCase("android")) {
 
                 UiAutomator2Options options = new UiAutomator2Options();
 
                 options.setPlatformName("Android");
-                options.setDeviceName("Samsung Galaxy S23");
-                options.setPlatformVersion("13.0");
-
-                // Upload app to BrowserStack and use returned app_url
-                options.setCapability("appium:app", "bs://f78b9e4edb24407257622e54586bdce3dc9fe6ff");
-
+                options.setDeviceName(bsDevice);
+                options.setPlatformVersion(bsVersion);
                 options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
 
-                // SAME as local behavior
-                options.setFullReset(true);     // uninstall + reinstall
-                options.setNoReset(false);
-                options.setAppWaitDuration(Duration.ofSeconds(60));
-                options.setNewCommandTimeout(Duration.ofSeconds(40));
+                options.setCapability("appium:app", bsApp);
 
                 options.setCapability("bstack:options", Map.of(
-                        "userName", "brahmendrajayara_zI9n7K",
-                        "accessKey", "9zCBA4RPLh4qsN9USceq",
-                        "buildName", "Mobile-Build-1",
-                        "sessionName", "Android Test"
+                        "userName", bsUsername,
+                        "accessKey", bsAccessKey,
+                        "projectName", "SwagLabs Automation",
+                        "buildName", buildName,
+                        "sessionName", sessionName,
+                        "debug", true,
+                        "networkLogs", true,
+                        "deviceLogs", true
                 ));
 
                 return new AndroidDriver(new URL(bsUrl), options);
-            } else if (platform.equalsIgnoreCase("ios")) {
+            }
+
+            else if (platform.equalsIgnoreCase("ios")) {
 
                 XCUITestOptions options = new XCUITestOptions();
 
                 options.setPlatformName("iOS");
-                options.setDeviceName("iPhone 15");
-                options.setPlatformVersion("17");
-
-                options.setCapability("appium:app", "bs://<your-app-id>");
-
+                options.setDeviceName(bsDevice);
+                options.setPlatformVersion(bsVersion);
                 options.setAutomationName(AutomationName.IOS_XCUI_TEST);
 
-                // SAME as local behavior
-                options.setFullReset(true);
-                options.setNoReset(false);
-                options.setNewCommandTimeout(Duration.ofSeconds(40));
+                options.setCapability("appium:app", bsApp);
 
                 options.setCapability("bstack:options", Map.of(
-                        "userName", "brahmendrajayara_zI9n7K",
-                        "accessKey", "9zCBA4RPLh4qsN9USceq",
-                        "buildName", "Mobile-Build-1",
-                        "sessionName", "iOS Test"
+                        "userName", bsUsername,
+                        "accessKey", bsAccessKey,
+                        "projectName", "SwagLabs Automation",
+                        "buildName", buildName,
+                        "sessionName", sessionName,
+                        "debug", true,
+                        "networkLogs", true,
+                        "deviceLogs", true
                 ));
 
                 return new IOSDriver(new URL(bsUrl), options);
             }
         }
+
         throw new RuntimeException("Invalid execution or platform value!");
     }
+
+
+
+
 }

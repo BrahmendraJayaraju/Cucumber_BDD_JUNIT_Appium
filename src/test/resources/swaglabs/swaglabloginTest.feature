@@ -1,28 +1,37 @@
 Feature: login test feature
 
 
-
   @REGRES
   Scenario: to test the login functionality standard user
       When user enter the username "standard_user"
       And  user enter the password "secret_sauce"
       And user click on the login button
       Then user can see the dashboard
-      Then user close the app
 
 
 
 
-  Scenario: to test ios testcase
-    When user clicks on tab
 
 
+  Scenario: to test ios testcase 1
+    When user enter the username "standard_user"
+    And  user enter the password "secret_sauce"
+    And user click on the login button
+
+
+
+  Scenario: to test ios testcase 2
+    When user enter the username "standard_user"
+    And  user enter the password "secret_sauce"
+    And user click on the login button
+
+  @REGRES
   Scenario: to test the login functionality problem user
     When user enter the username "problem_user"
     And  user enter the password "secret_sauce"
     And user click on the login button
     Then user can see the dashboard
-    Then user close the app
+
 
 
 

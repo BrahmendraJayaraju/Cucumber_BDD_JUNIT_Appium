@@ -7,8 +7,6 @@ public class DriverManager {
     private static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
 
     public static AppiumDriver getDriver() {
-
-
         return driver.get();
     }
 
@@ -17,10 +15,12 @@ public class DriverManager {
     }
 
     public static void quitDriver() {
-        if (driver.get() != null) {
-            driver.get().quit();
-            driver.remove();
 
+        AppiumDriver currentDriver = driver.get();
+
+        if (currentDriver != null) {
+            currentDriver.quit();
+            driver.remove();
         }
     }
 }
