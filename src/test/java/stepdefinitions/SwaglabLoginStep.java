@@ -22,15 +22,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 
-public class SwaglabLoginStep {
+public class SwaglabLoginStep
+{
 
     String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
-    String platform = Utility.getValue(configPath, "platform");
+    String platform = System.getProperty("platform");
 
-    private AppiumDriver getDriver() {
+    public SwaglabLoginStep() {
+        if (platform == null || platform.isEmpty()) {
+            platform = Utility.getValue(configPath, "platform");
+        }
+    }
+
+
+
+
+    private AppiumDriver getDriver()
+    {
         return DriverManager.getDriver();
     }
+
 
 
     @When("user enter the username {string}")
