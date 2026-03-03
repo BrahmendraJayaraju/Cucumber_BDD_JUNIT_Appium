@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="7nd commit">
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="8nd commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testenvironment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/testenvironment.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +206,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772500235030</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="8nd commit">
+      <option name="closed" value="true" />
+      <created>1772502734593</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1772502734593</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -227,7 +236,8 @@
     <MESSAGE value="5nd commit" />
     <MESSAGE value="6nd commit" />
     <MESSAGE value="7nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="7nd commit" />
+    <MESSAGE value="8nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="8nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
