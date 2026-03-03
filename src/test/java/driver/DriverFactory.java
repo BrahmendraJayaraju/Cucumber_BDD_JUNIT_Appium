@@ -92,9 +92,8 @@ public class DriverFactory {
         // =========================
         else if (execution.equalsIgnoreCase("browserstack")) {
 
-            String browserstackbaseurl= System.getProperty("browserstackbaseurl");
 
-            String bsUrl = System.getProperty(browserstackbaseurl);
+            String bsUrl = Utility.getValue(configPath, "browserstackbaseurl");
 
             String bsUsername = System.getenv("BROWSERSTACK_USERNAME");
             String bsAccessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
