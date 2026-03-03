@@ -40,6 +40,25 @@ pipeline {
             }
         }
 
+
+
+
+        stage('Check ADB') {
+            steps {
+                sh 'echo "Checking adb path..."'
+                sh 'which adb'
+                sh 'adb devices'
+            }
+        }
+
+
+
+
+
+
+
+
+
         stage('Run Tests') {
             steps {
                 sh "mvn clean test -Dexecution=${params.EXECUTION} -Dplatform=${params.PLATFORM}"
