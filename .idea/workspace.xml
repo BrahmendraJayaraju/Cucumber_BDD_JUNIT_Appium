@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="11nd commit">
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="12nd commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/driver/DriverFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/driver/MobileLifecycleManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/driver/MobileLifecycleManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/Hooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/SwaglabLoginStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/SwaglabLoginStep.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/dummystep.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testenvironment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/testenvironment.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +243,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772504859001</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="12nd commit">
+      <option name="closed" value="true" />
+      <created>1772505057554</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1772505057554</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +277,8 @@
     <MESSAGE value="9nd commit" />
     <MESSAGE value="10nd commit" />
     <MESSAGE value="11nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="11nd commit" />
+    <MESSAGE value="12nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="12nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

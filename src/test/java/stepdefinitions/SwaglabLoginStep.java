@@ -29,11 +29,14 @@ public class SwaglabLoginStep
 
     String platform = System.getProperty("platform");
 
-    public SwaglabLoginStep() {
-        if (platform == null || platform.isEmpty()) {
+    public SwaglabLoginStep()
+    {
+        if (platform == null || platform.isEmpty())
+        {
             platform = Utility.getValue(configPath, "platform");
         }
     }
+
 
 
 
@@ -46,7 +49,7 @@ public class SwaglabLoginStep
 
 
     @When("user enter the username {string}")
-    public void user_enter_the_username(String username) throws InterruptedException {
+    public void user_enter_the_username(String username)  {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         if (platform.equalsIgnoreCase("android"))
         {
@@ -130,7 +133,7 @@ public class SwaglabLoginStep
 
     @When("user clicks on tab")
     public void user_clicks_on_tab() throws InterruptedException {
-        // Write code here that turns the phrase above into concrete actions
+
         Thread.sleep(15000);
         getDriver().findElement(
                 AppiumBy.xpath("//XCUIElementTypeButton[@name=\"tab bar option cart\"]")

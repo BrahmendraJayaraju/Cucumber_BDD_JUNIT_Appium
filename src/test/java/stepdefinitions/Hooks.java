@@ -28,7 +28,7 @@ public class Hooks {
         String execution = Utility.getValue(configPath, "execution");
 
         if (firstRun & execution.equalsIgnoreCase("local") ){
-            System.out.println("🔥 GLOBAL SETUP FROM HOOK 🔥");
+            System.out.println(" GLOBAL SETUP FROM HOOK ");
             MobileLifecycleManager.uninstallAppBasedOnConfig();
             firstRun = false;
         }

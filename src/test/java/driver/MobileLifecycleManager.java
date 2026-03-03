@@ -53,7 +53,7 @@ public class MobileLifecycleManager {
 
                 String bundleId = Utility.getValue(configPath, "bundleid");
 
-                // 🚀 Fastest way (No temp driver, no WDA restart)
+
                 Process process = Runtime.getRuntime().exec(
                         "xcrun simctl uninstall " + deviceId + " " + bundleId
                 );

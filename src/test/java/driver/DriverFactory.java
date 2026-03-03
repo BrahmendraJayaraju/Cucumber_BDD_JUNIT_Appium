@@ -17,6 +17,7 @@ public class DriverFactory {
 
         String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
+
         String execution = System.getProperty("execution");
 
         if (execution == null || execution.isEmpty()) {
@@ -29,9 +30,7 @@ public class DriverFactory {
         }
         String localurl = Utility.getValue(configPath, "localurl");
         String deviceid = Utility.getValue(configPath, "deviceid");
-        String apppackage = Utility.getValue(configPath, "apppackage");
-        String appactivity = Utility.getValue(configPath, "appactivity");
-        String bundleid = Utility.getValue(configPath, "bundleid");
+
 
         if (execution.equalsIgnoreCase("local")) {
 
@@ -52,7 +51,7 @@ public class DriverFactory {
 
                 // Always fresh install
                 options.setApp(System.getProperty("user.dir")
-                        + "/Applications/Android/com.swaglabsmobileapp--12.apk");
+                        +"/Applications/Android/com.swaglabsmobileapp--12.apk");
 
                 options.setNoReset(true);
                 options.setFullReset(false);
@@ -78,7 +77,7 @@ public class DriverFactory {
 
                 // Always fresh install
                 options.setApp(System.getProperty("user.dir")
-                        + "/Applications/ios/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip");
+                        +"/Applications/ios/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip");
 
                 options.setNoReset(true);
                 options.setFullReset(false);
@@ -93,7 +92,7 @@ public class DriverFactory {
         // =========================
         else if (execution.equalsIgnoreCase("browserstack")) {
 
-            String bsUrl = "https://hub.browserstack.com/wd/hub";
+            String bsUrl = System.getProperty("browserstackbaseurl");
 
             String bsUsername = System.getenv("BROWSERSTACK_USERNAME");
             String bsAccessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
