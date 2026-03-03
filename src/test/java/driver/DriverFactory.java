@@ -17,7 +17,11 @@ public class DriverFactory {
 
         String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
-        String execution = Utility.getValue(configPath, "execution");
+        String execution = System.getProperty("execution");
+
+        if (execution == null || execution.isEmpty()) {
+            execution = Utility.getValue(configPath, "execution");
+        }
         String platform = Utility.getValue(configPath, "platform");
         String localurl = Utility.getValue(configPath, "localurl");
         String deviceid = Utility.getValue(configPath, "deviceid");
@@ -87,8 +91,8 @@ public class DriverFactory {
 
             String bsUrl = "https://hub.browserstack.com/wd/hub";
 
-            String bsUsername = Utility.getValue(configPath, "bs.username");
-            String bsAccessKey = Utility.getValue(configPath, "bs.accesskey");
+            String bsUsername = System.getenv("BROWSERSTACK_USERNAME");
+            String bsAccessKey = System.getenv("BROWSERSTACK_ACCESS_KEY");
             String bsApp = Utility.getValue(configPath, "bs.app");
             String bsDevice = Utility.getValue(configPath, "bs.device");
             String bsVersion = Utility.getValue(configPath, "bs.osVersion");

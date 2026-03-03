@@ -11,7 +11,11 @@ import io.cucumber.junit.CucumberOptions;
         monochrome = true,
         dryRun = false,
         tags="@REGRES",
-        plugin = {"pretty","html:HTMLReport.html"}
+        plugin = {
+                "pretty",
+                "html:target/cucumber-report.html",
+                "json:target/cucumber.json"
+        }
 )
 public class Runner {
 
