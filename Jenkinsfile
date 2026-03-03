@@ -70,7 +70,7 @@ pipeline {
 
         always {
 
-            junit 'target/cucumber.xml'
+
 
             publishHTML([
                 reportDir: 'target',

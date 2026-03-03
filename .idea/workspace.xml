@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="6nd commit">
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="7nd commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Jenkinsfile" beforeDir="false" afterPath="$PROJECT_DIR$/Jenkinsfile" afterDir="false" />
     </list>
@@ -197,7 +197,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772499912453</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="7nd commit">
+      <option name="closed" value="true" />
+      <created>1772500235030</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1772500235030</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -218,7 +226,8 @@
     <MESSAGE value="4nd commit" />
     <MESSAGE value="5nd commit" />
     <MESSAGE value="6nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="6nd commit" />
+    <MESSAGE value="7nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="7nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
