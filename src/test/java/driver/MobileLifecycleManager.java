@@ -15,6 +15,12 @@ public class MobileLifecycleManager {
             String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
             String platform = Utility.getValue(configPath, "platform");
+
+            if (platform == null || platform.isEmpty()) {
+                platform = Utility.getValue(configPath, "platform");
+            }
+
+
             String deviceId = Utility.getValue(configPath, "deviceid");
             String localUrl = Utility.getValue(configPath, "localurl");
 
