@@ -4,12 +4,18 @@ pipeline {
 
     parameters {
         choice(name: 'EXECUTION', choices: ['local', 'browserstack'], description: 'Select execution mode')
+        choice(name: 'PLATFORM', choices: ['android', 'ios'], description: 'Select platform')
     }
 
     triggers {
         cron('45 18 * * *')   // 6:45 PM daily (server time)
         githubPush()
     }
+
+
+
+
+
 
     environment {
         BROWSERSTACK_USERNAME = credentials('bs-username')
@@ -36,7 +42,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh "mvn clean test -Dexecution=${params.EXECUTION}"
+                sh "mvn clean test -Dexecution=${params.EXECUTION} -Dplatform=${params.PLATFORM}"
             }
         }
     }

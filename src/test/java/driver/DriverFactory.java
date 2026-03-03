@@ -22,7 +22,11 @@ public class DriverFactory {
         if (execution == null || execution.isEmpty()) {
             execution = Utility.getValue(configPath, "execution");
         }
-        String platform = Utility.getValue(configPath, "platform");
+        String platform = System.getProperty("platform");
+
+        if (platform == null || platform.isEmpty()) {
+            platform = Utility.getValue(configPath, "platform");
+        }
         String localurl = Utility.getValue(configPath, "localurl");
         String deviceid = Utility.getValue(configPath, "deviceid");
         String apppackage = Utility.getValue(configPath, "apppackage");
