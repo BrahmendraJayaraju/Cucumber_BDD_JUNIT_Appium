@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="13nd commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testenvironment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/testenvironment.properties" afterDir="false" />
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="14nd commit">
+      <change beforePath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -293,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772513734611</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="14nd commit">
+      <option name="closed" value="true" />
+      <created>1772739746915</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1772739746915</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -321,7 +328,8 @@
     <MESSAGE value="11nd commit" />
     <MESSAGE value="12nd commit" />
     <MESSAGE value="13nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="13nd commit" />
+    <MESSAGE value="14nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="14nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
