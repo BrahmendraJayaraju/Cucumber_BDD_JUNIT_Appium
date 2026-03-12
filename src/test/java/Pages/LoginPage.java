@@ -33,10 +33,14 @@ public class LoginPage extends Utility
         return this;
     }
 
-    public LoginPage validateerror(String element,String value) {
+    public LoginPage validateerror(String element,String value)
+    {
 
-String actualvalue=this.getText("accessibilityid",element);
-System.out.println("das:"+actualvalue);
+
+
+String actualvalue=this.getText("xpath",element);
+
+
  this.compare(actualvalue,value);
 
 

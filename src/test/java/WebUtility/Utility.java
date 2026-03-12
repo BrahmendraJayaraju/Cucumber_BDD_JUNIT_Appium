@@ -84,7 +84,7 @@ public class Utility {
     }
 
 
-    // done a ios
+
     public void clickElement(String locatorType, String value) {
 
         waitForElement(locatorType, value);
@@ -135,7 +135,7 @@ public class Utility {
     }
 
 
-    // done a ios
+
     public void enterText(String locatorType, String value, String text) {
 
         try {
@@ -370,9 +370,9 @@ public class Utility {
     }
 
 
-    //done a ios
-    public String
-    getText(String locatorType, String value) {
+
+    public String getText(String locatorType, String value)
+    {
         try {
             waitForElement(locatorType, value);
 
@@ -384,6 +384,9 @@ public class Utility {
                     return driver.findElement(AppiumBy.id(value)).getText();
 
                 case "accessibilityid":
+
+                    System.out.println("camehere");
+
                     return driver.findElement(AppiumBy.accessibilityId(value)).getText();
 
                 case "classname":
@@ -407,7 +410,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void clickUsingActions(String locatorType, String value) {
         try {
             waitForElement(locatorType, value);
@@ -922,7 +925,7 @@ public class Utility {
     }
 
 
-    // done a ios
+
     public void pressHome() {
         try {
             if (driver instanceof AndroidDriver) {
@@ -937,7 +940,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void lockDevice() {
         try {
             if (driver instanceof AndroidDriver) {
@@ -952,7 +955,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void unlockDevice() {
         try {
             if (driver instanceof AndroidDriver) {
@@ -968,7 +971,7 @@ public class Utility {
     }
 
 
-    //done a ios
+
     public void rotateLandscape() {
         try {
             if (driver instanceof AndroidDriver) {
@@ -983,7 +986,7 @@ public class Utility {
         }
     }
 
-    //done a ios
+
     public void rotatePortrait() {
         try {
             if (driver instanceof AndroidDriver) {
@@ -1001,7 +1004,7 @@ public class Utility {
         }
     }
 
-    //done a ios
+
     public void openKeyboard(String locatorType, String value) {
         try {
             WebElement element = null;
@@ -1052,7 +1055,7 @@ public class Utility {
         }
     }
 
-    //done a ios
+
     public void hideKeyboard() {
         try {
             if (driver instanceof AndroidDriver) {
@@ -1067,7 +1070,7 @@ public class Utility {
         }
     }
 
-    //done a
+
     public void clearNotifications(String locatorType, String value) {
         try {
             By locator = null;
@@ -1135,7 +1138,7 @@ public class Utility {
     }
 
 
-    //done a ios
+
     public void pressKeyboardKeys(String text) {
         try {
             if (driver instanceof AndroidDriver) {
@@ -1198,7 +1201,7 @@ public class Utility {
         }
     }
 
-    //done a ios
+
     public void longPress(String locatorType, String value, int holdTime) {
         try {
             WebElement element = null;
@@ -1266,7 +1269,7 @@ public class Utility {
     }
 
 
-    // done a  ios
+    // send as parameter
     public void openBrowser(String browser, String url) {
 
         AppiumDriverLocalService service = null;
@@ -1310,7 +1313,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void putAppInBackground(int seconds) {
         {
 
@@ -1340,7 +1343,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void zoomIn() {
 
         Dimension size = driver.manage().window().getSize();
@@ -1369,7 +1372,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void zoomOut() {
 
         Dimension size = driver.manage().window().getSize();
@@ -1400,7 +1403,7 @@ public class Utility {
         }
     }
 
-    // done a ios
+
     public void closeapp() {
         if (driver instanceof AndroidDriver) {
 
@@ -1416,51 +1419,51 @@ public class Utility {
 
     }
 
-    // done a ios
-    public void switchtootherapp() {
+
+    public void switchtootherapp(String value) {
 
 
         if (driver instanceof AndroidDriver) {
 
-            ((AndroidDriver) driver).activateApp("com.flipkart.android");
+            ((AndroidDriver) driver).activateApp(value);
 
         } else if (driver instanceof IOSDriver) {
 
-            ((IOSDriver) driver).activateApp("com.apple.Maps");
+            ((IOSDriver) driver).activateApp(value);
 
 
         }
 
     }
 
-    // done a ios
-    public void switchbackapp() {
+
+    public void switchbackapp(String value) {
         if (driver instanceof AndroidDriver) {
 
-            ((AndroidDriver) driver).activateApp("com.swaglabsmobileapp");
+            ((AndroidDriver) driver).activateApp(value);
 
         } else if (driver instanceof IOSDriver) {
 
-            ((IOSDriver) driver).activateApp("com.saucelabs.SwagLabsMobileApp");
+            ((IOSDriver) driver).activateApp(value);
 
 
         }
     }
 
 
-    // done a ios
-    public void terminatespecificapp() {
+
+    public void terminatespecificapp(String value) {
         if (driver instanceof AndroidDriver) {
 
 
-            ((AndroidDriver) driver).terminateApp("com.flipkart.android");
+            ((AndroidDriver) driver).terminateApp(value);
 
             System.out.println("it terminates app but in recent still it shows you can check with commend adb shell pidof com.flipkart.android");
 
         } else if (driver instanceof IOSDriver) {
 
 
-            ((IOSDriver) driver).terminateApp("com.apple.Maps");
+            ((IOSDriver) driver).terminateApp(value);
             System.out.println("ios terminated");
 
 

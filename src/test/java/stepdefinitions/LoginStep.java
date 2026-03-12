@@ -47,6 +47,7 @@ public class LoginStep
 
 
     public static String  errorpathios= Utility.getValue( objectRepologin, "errorpath");
+    public static String  errorpathandroid= Utility.getValue( objectRepologin, "errorpathandroid");
 
     public static String  errormessage = Utility.getValue( logindata , "lockouterror");
 
@@ -97,15 +98,19 @@ public class LoginStep
     @When("user enter the username {string} and password {string}")
     public void user_enter_the_username_and_password_outline(String user, String pass) {
 
-        System.out.println("Running for user: " + user);
+        if (platform.equalsIgnoreCase("android"))
+        {
 
-        if (platform.equalsIgnoreCase("android")) {
+
+
 
             login.username(usernamexpathandroid,user);
             login.password(passwordxpathandroid,pass);
 
-        } else if(platform.equalsIgnoreCase("ios")) {
 
+        }
+        else if(platform.equalsIgnoreCase("ios"))
+        {
             login.username(usernamexpathios,user);
             login.password(passwordxpathios ,pass);
         }
@@ -137,7 +142,9 @@ public class LoginStep
 
         if (platform.equalsIgnoreCase("android")) {
 
-          //login.validateerror(,errormessage);
+
+
+          login.validateerror(errorpathandroid,errormessage);
         }
         else if (platform.equalsIgnoreCase("ios")) {
 
