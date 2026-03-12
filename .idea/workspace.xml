@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="15nd commit">
-      <change afterPath="$PROJECT_DIR$/Applications/Android/Motovolt_1.5.9_APKPure.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Applications/Android/android-app.apk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Locators/login.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TestData/loginTestData.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/Pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/WebUtility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebUtility/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/driver/DriverFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/driver/ServerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/driver/ServerManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/Hooks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/SwaglabLoginStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/LoginStep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" afterDir="false" />
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="16nd commit">
       <change beforePath="$PROJECT_DIR$/testenvironment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/testenvironment.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -342,7 +330,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772739925106</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="16nd commit">
+      <option name="closed" value="true" />
+      <created>1773281217201</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1773281217201</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -372,7 +368,8 @@
     <MESSAGE value="13nd commit" />
     <MESSAGE value="14nd commit" />
     <MESSAGE value="15nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="15nd commit" />
+    <MESSAGE value="16nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="16nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
