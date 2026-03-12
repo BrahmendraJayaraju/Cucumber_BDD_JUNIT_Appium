@@ -4,8 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="14nd commit">
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="15nd commit">
+      <change afterPath="$PROJECT_DIR$/Applications/Android/Motovolt_1.5.9_APKPure.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Applications/Android/android-app.apk" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Locators/login.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TestData/loginTestData.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/WebUtility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebUtility/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/driver/DriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/driver/ServerManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/driver/ServerManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/Hooks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/SwaglabLoginStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/LoginStep.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testenvironment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/testenvironment.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,29 +60,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Cucumber Java.Feature: swaglabloginTest.executor&quot;: &quot;Run&quot;,
-    &quot;Cucumber Java.Scenario: to test the login functionality problem user.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Runner.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CucumberBDD_POM [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.CucumberBDD_POM [install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/brahmendrajayaraju/IdeaProjects/CucumberBDD_POM/Applications/ios&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/Users/brahmendrajayaraju/IdeaProjects/CucumberBDD_POM/src/main/java/org/example/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Cucumber Java.Feature: swaglabloginTest.executor": "Run",
+    "Cucumber Java.Scenario: Login with locked user.executor": "Run",
+    "Cucumber Java.Scenario: to test the login functionality problem user.executor": "Run",
+    "JUnit.Runner.executor": "Run",
+    "Maven.CucumberBDD_POM [clean].executor": "Run",
+    "Maven.CucumberBDD_POM [install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/brahmendrajayaraju/IdeaProjects/CucumberBDD_POM/Applications/Android",
+    "onboarding.tips.debug.path": "/Users/brahmendrajayaraju/IdeaProjects/CucumberBDD_POM/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/Applications/ios" />
       <recent name="$PROJECT_DIR$/Applications/Android" />
+      <recent name="$PROJECT_DIR$/Applications/ios" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="stepdefinitions" />
@@ -85,6 +98,26 @@
       <module name="CucumberBDD_POM" />
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter" />
       <option name="SUGGESTED_NAME" value="Feature: swaglabloginTest" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Login with locked user" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" />
+      <option name="GLUE" value="stepdefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="CucumberBDD_POM" />
+      <option name="NAME_FILTER" value="^Login with locked user$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Login with locked user$&quot;" />
+      <option name="SUGGESTED_NAME" value="Scenario: Login with locked user" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -134,8 +167,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.Runner" />
-        <item itemvalue="Cucumber Java.Scenario: to test the login functionality problem user" />
+        <item itemvalue="Cucumber Java.Scenario: Login with locked user" />
         <item itemvalue="Cucumber Java.Feature: swaglabloginTest" />
+        <item itemvalue="Cucumber Java.Scenario: to test the login functionality problem user" />
       </list>
     </recent_temporary>
   </component>
@@ -300,7 +334,15 @@
       <option name="project" value="LOCAL" />
       <updated>1772739746915</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="15nd commit">
+      <option name="closed" value="true" />
+      <created>1772739925106</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1772739925106</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -329,7 +371,8 @@
     <MESSAGE value="12nd commit" />
     <MESSAGE value="13nd commit" />
     <MESSAGE value="14nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="14nd commit" />
+    <MESSAGE value="15nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="15nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -338,6 +381,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/example/Main.java</url>
           <line>13</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/TestRunner/Runner.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

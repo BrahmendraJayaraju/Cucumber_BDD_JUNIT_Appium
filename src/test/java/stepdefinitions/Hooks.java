@@ -45,7 +45,7 @@ public class Hooks {
     }
 
     // ================= AFTER STEP =================
-    @AfterStep
+    /*@AfterStep
     public void afterStep(Scenario scenario) {
         System.out.println("After Hook Running");
         AppiumDriver driver = DriverManager.getDriver();
@@ -58,7 +58,32 @@ public class Hooks {
 
         scenario.attach(screenshot, "image/png",
                 "Screenshot - " + scenario.getStatus());
+    }*/
+
+    @AfterStep
+    public void afterStep(Scenario scenario) {
+        System.out.println("After Hook Running");
+        AppiumDriver driver = DriverManager.getDriver();
+
+        if (driver != null) {
+            try {
+
+                if (driver.getSessionId() != null) {
+
+                    byte[] screenshot = ((TakesScreenshot) driver)
+                            .getScreenshotAs(OutputType.BYTES);
+
+                    scenario.attach(screenshot, "image/png", "Screenshot");
+
+                }
+
+            } catch (Exception e) {
+                System.out.println("Screenshot skipped because session is closed");
+            }
+        }
     }
+
+
 
     // ================= AFTER =================
     @After

@@ -2,6 +2,7 @@ package driver;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 
+
 public class ServerManager {
 
     private static AppiumDriverLocalService service;
@@ -10,6 +11,9 @@ public class ServerManager {
 
         if (service == null || !service.isRunning()) {
             service = AppiumDriverLocalService.buildDefaultService();
+
+
+
             service.start();
             System.out.println("Appium Server Started");
         }

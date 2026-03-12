@@ -20,6 +20,13 @@ public class DriverFactory {
 
         String execution = System.getProperty("execution");
 
+        String apppackage= Utility.getValue(configPath, "apppackage");
+
+        String  appactivity=Utility.getValue(configPath, "appactivity");
+        String bundleid=Utility.getValue(configPath, "bundleid");
+
+
+
         if (execution == null || execution.isEmpty()) {
             execution = Utility.getValue(configPath, "execution");
         }
@@ -46,12 +53,16 @@ public class DriverFactory {
                 options.setPlatformName("Android");
                 options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
                 options.setUdid(deviceid);
+                options.setAutoGrantPermissions(true);
+                options.setAppPackage(apppackage);
+                options.setAppActivity(appactivity);
+
+
 
 
 
                 // Always fresh install
-                options.setApp(System.getProperty("user.dir")
-                        +"/Applications/Android/com.swaglabsmobileapp--12.apk");
+                options.setApp(System.getProperty("user.dir")+"/Applications/Android/com.swaglabsmobileapp--12.apk");
 
                 options.setNoReset(true);
                 options.setFullReset(false);
@@ -73,11 +84,14 @@ public class DriverFactory {
                 options.setPlatformName("iOS");
                 options.setAutomationName(AutomationName.IOS_XCUI_TEST);
                 options.setUdid(deviceid);
+                options.setAutoAcceptAlerts(true);
+                options.setBundleId(bundleid);
+
+
 
 
                 // Always fresh install
-                options.setApp(System.getProperty("user.dir")
-                        +"/Applications/ios/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip");
+                options.setApp(System.getProperty("user.dir") +"/Applications/ios/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip");
 
                 options.setNoReset(true);
                 options.setFullReset(false);
@@ -112,6 +126,8 @@ public class DriverFactory {
                 options.setDeviceName(bsDevice);
                 options.setPlatformVersion(bsVersion);
                 options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
+                options.setAutoGrantPermissions(true);
+
 
                 options.setCapability("appium:app", bsApp);
 
@@ -137,6 +153,8 @@ public class DriverFactory {
                 options.setDeviceName(bsDevice);
                 options.setPlatformVersion(bsVersion);
                 options.setAutomationName(AutomationName.IOS_XCUI_TEST);
+                options.setAutoAcceptAlerts(true);
+
 
                 options.setCapability("appium:app", bsApp);
 
