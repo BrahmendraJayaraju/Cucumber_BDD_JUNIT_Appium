@@ -13,7 +13,8 @@ import java.util.Map;
 
 public class DriverFactory {
 
-    public static AppiumDriver createDriver() throws Exception {
+    public static AppiumDriver createDriver() throws Exception
+    {
 
         String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
@@ -27,12 +28,14 @@ public class DriverFactory {
 
 
 
-        if (execution == null || execution.isEmpty()) {
+        if (execution == null || execution.isEmpty())
+        {
             execution = Utility.getValue(configPath, "execution");
         }
         String platform = System.getProperty("platform");
 
-        if (platform == null || platform.isEmpty()) {
+        if (platform == null || platform.isEmpty())
+        {
             platform = Utility.getValue(configPath, "platform");
         }
         String localurl = Utility.getValue(configPath, "localurl");
@@ -74,6 +77,7 @@ public class DriverFactory {
 
                 return new AndroidDriver(new URL(localurl), options);
             }
+
             // =========================
             // LOCAL IOS
             // =========================

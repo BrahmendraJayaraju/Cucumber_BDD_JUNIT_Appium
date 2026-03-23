@@ -12,9 +12,9 @@ import io.cucumber.junit.CucumberOptions;
         dryRun = false,
         tags="@REGRES",
         plugin = {
-                "pretty",
-                "html:target/cucumber-report.html",
-                "json:target/cucumber.json"
+                "pretty", //clean readable output in console
+                "html:target/cucumber-report.html",  //Generates HTML report
+                "json:target/cucumber.json" //JSON report
         }
 )
 public class Runner {
