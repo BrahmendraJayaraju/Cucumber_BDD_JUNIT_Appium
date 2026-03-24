@@ -18,9 +18,8 @@ public class DriverFactory {
 
         String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
-//
-        String execution = System.getProperty("execution");
-        String platform = System.getProperty("platform");
+        String execution = Utility.getValue(configPath, "execution");
+        String platform = Utility.getValue(configPath, "platform");
 
 
         String apppackage= Utility.getValue(configPath, "apppackage");
@@ -32,18 +31,6 @@ public class DriverFactory {
 
 
 
-        if (execution == null || execution.isEmpty())
-        {
-            execution = Utility.getValue(configPath, "execution");
-
-
-
-        }
-
-        if (platform == null || platform.isEmpty())
-        {
-            platform = Utility.getValue(configPath, "platform");
-        }
 
 
 
