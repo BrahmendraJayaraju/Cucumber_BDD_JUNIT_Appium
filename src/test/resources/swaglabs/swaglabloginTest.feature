@@ -8,7 +8,7 @@ Feature: Login test feature
     And user click on the login button
 
 
-
+  #datatable
   @REGRES
   Scenario: Login with locked user
     When user enter the username and password
@@ -18,6 +18,8 @@ Feature: Login test feature
     Then validate error message
 
 
+
+    #example table
   @REGRES
   Scenario Outline: Login with multiple users
     When user enter the username "<USERNAME>" and password "<PASSWORD>"

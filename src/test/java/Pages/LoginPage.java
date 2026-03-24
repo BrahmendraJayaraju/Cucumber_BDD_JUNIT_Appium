@@ -6,13 +6,15 @@ import io.appium.java_client.AppiumDriver;
 
 
 public class LoginPage extends Utility {
-    public static String objectRepologin = "./Locators/login.properties";
 
-    public static String logindata = "./TestData/loginTestData.properties";
 
     String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
     String platform = Utility.getValue(configPath, "platform");
+
+    public static String objectRepologin = "./Locators/login.properties";
+
+    public static String logindata = "./TestData/loginTestData.properties";
 
     public static String usernamexpathandroid = Utility.getValue(objectRepologin, "usernameandroid");
     public static String usernamexpathios = Utility.getValue(objectRepologin, "usernameios");
@@ -31,11 +33,13 @@ public class LoginPage extends Utility {
     public static String errormessage = Utility.getValue(logindata, "lockouterror");
 
 
-    public LoginPage(AppiumDriver driver) {
+    public LoginPage(AppiumDriver driver)
+    {
         super(driver);
     }
 
-    public LoginPage username(String text) {
+    public LoginPage username(String text)
+    {
 
 
         if (platform.equalsIgnoreCase("android")) {

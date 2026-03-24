@@ -18,96 +18,93 @@ public class DriverFactory {
 
         String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
 
-
+//
         String execution = System.getProperty("execution");
+        String platform = System.getProperty("platform");
+
 
         String apppackage= Utility.getValue(configPath, "apppackage");
 
         String  appactivity=Utility.getValue(configPath, "appactivity");
         String bundleid=Utility.getValue(configPath, "bundleid");
+        String localurl = Utility.getValue(configPath, "localurl");
+        String deviceid = Utility.getValue(configPath, "deviceid");
 
 
 
         if (execution == null || execution.isEmpty())
         {
             execution = Utility.getValue(configPath, "execution");
+
+
+
         }
-        String platform = System.getProperty("platform");
 
         if (platform == null || platform.isEmpty())
         {
             platform = Utility.getValue(configPath, "platform");
         }
-        String localurl = Utility.getValue(configPath, "localurl");
-        String deviceid = Utility.getValue(configPath, "deviceid");
+
+
+
+
+
+
 
 
         if (execution.equalsIgnoreCase("local")) {
 
 
 
-            // =========================
-            // LOCAL ANDROID
-            // =========================
+
             if (platform.equalsIgnoreCase("android")) {
 
                 UiAutomator2Options options = new UiAutomator2Options();
 
+                options.setApp(System.getProperty("user.dir")+"/Applications/Android/com.swaglabsmobileapp--12.apk");
                 options.setPlatformName("Android");
-                options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
-                options.setUdid(deviceid);
-                options.setAutoGrantPermissions(true);
                 options.setAppPackage(apppackage);
                 options.setAppActivity(appactivity);
-
-
-
-
-
-                // Always fresh install
-                options.setApp(System.getProperty("user.dir")+"/Applications/Android/com.swaglabsmobileapp--12.apk");
-
-                options.setNoReset(true);
-                options.setFullReset(false);
                 options.setAppWaitActivity("*");
-
-
+                options.setUdid(deviceid);
+                options.setAutoGrantPermissions(true);
                 options.setCapability("appium:forceAppLaunch", true);
+                options.setAutomationName(AutomationName.ANDROID_UIAUTOMATOR2);
+                options.setNoReset(false);
 
 
                 return new AndroidDriver(new URL(localurl), options);
             }
 
-            // =========================
-            // LOCAL IOS
-            // =========================
+
             else if (platform.equalsIgnoreCase("ios")) {
 
                 XCUITestOptions options = new XCUITestOptions();
-
-                options.setPlatformName("iOS");
-                options.setAutomationName(AutomationName.IOS_XCUI_TEST);
-                options.setUdid(deviceid);
-                options.setAutoAcceptAlerts(true);
-                options.setBundleId(bundleid);
-
-
-
-
-                // Always fresh install
                 options.setApp(System.getProperty("user.dir") +"/Applications/ios/iOS.Simulator.SauceLabs.Mobile.Sample.app.2.7.1.zip");
+                options.setPlatformName("iOS");
+                options.setUdid(deviceid);
 
+                options.setBundleId(bundleid);
+                options.setAutoAcceptAlerts(true);
+                options.setAutomationName(AutomationName.IOS_XCUI_TEST);
+                //ios working opposite
                 options.setNoReset(true);
-                options.setFullReset(false);
+
+
+
+
+
+
+
+
+
 
 
                 return new IOSDriver(new URL(localurl), options);
             }
         }
 
-        // =========================
-        // BROWSERSTACK
-        // =========================
+
         else if (execution.equalsIgnoreCase("browserstack")) {
 
 

@@ -17,18 +17,19 @@ public class Hooks {
 
 
     @BeforeAll
-    public static void globalSetUp() {
+    public static void globalSetUp()
+    {
 
-        System.out.println("===== BEFORE ALL =====");
+
 
         String execution = Utility.getValue(CONFIG_PATH, "execution");
 
         if (execution.equalsIgnoreCase("local")) {
             try {
-                // Start Appium Server
+
                 ServerManager.startServer();
 
-                // Uninstall app
+
                 MobileLifecycleManager.uninstallAppBasedOnConfig();
 
                 System.out.println("Server Started + App Uninstalled");
@@ -44,7 +45,7 @@ public class Hooks {
     @Before
     public void setUp() throws Exception {
 
-        System.out.println("===== BEFORE HOOK =====");
+
 
         // Create driver
         AppiumDriver driver = DriverFactory.createDriver();
@@ -65,7 +66,7 @@ public class Hooks {
 
         AppiumDriver driver = DriverManager.getDriver();
 
-        if (driver != null) {
+
             try {
                 if (driver.getSessionId() != null) {
 
@@ -79,28 +80,31 @@ public class Hooks {
                     );
                 }
 
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 System.out.println("Screenshot skipped: " + e.getMessage());
             }
-        }
+
     }
 
 
 
     @After
-    public void tearDown() {
+    public void tearDown()
+    {
 
         System.out.println("===== AFTER HOOK =====");
 
         AppiumDriver driver = DriverManager.getDriver();
 
-        if (driver != null) {
+
             try {
 
                 String appPackage = Utility.getValue(CONFIG_PATH, "apppackage");
                 String bundleId  = Utility.getValue(CONFIG_PATH, "bundleid");
 
-                // -------- ANDROID --------
+
                 if (driver instanceof AndroidDriver android)
                 {
 
@@ -112,7 +116,7 @@ public class Hooks {
 
                 }
 
-                // -------- IOS --------
+
                 else if (driver instanceof IOSDriver ios)
                 {
 
@@ -120,26 +124,29 @@ public class Hooks {
                     System.out.println("iOS App Terminated");
                 }
 
-            } catch (Exception e) {
+            }
+            catch (Exception e)
+            {
                 System.out.println("App Termination Failed: " + e.getMessage());
             }
 
             DriverManager.quitDriver();
             System.out.println("Driver Quit Successfully");
-        }
+
     }
 
 
-    // ================= AFTER ALL =================
+
     @AfterAll
     public static void cleanUp()
     {
 
-        System.out.println("===== AFTER ALL =====");
+
 
         String execution = Utility.getValue(CONFIG_PATH, "execution");
 
-        if (execution.equalsIgnoreCase("local")) {
+        if (execution.equalsIgnoreCase("local"))
+        {
 
             try {
                 ServerManager.stopServer();

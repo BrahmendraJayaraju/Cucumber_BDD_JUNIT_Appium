@@ -17,13 +17,11 @@ public class DriverManager
         driver.set(driverInstance);
     }
 
-    public static void quitDriver() {
+    public static void quitDriver()
+    {
 
-        AppiumDriver currentDriver = driver.get();
-
-        if (currentDriver != null) {
-            currentDriver.quit();
+         driver.get().quit();
             driver.remove();
-        }
+
     }
 }

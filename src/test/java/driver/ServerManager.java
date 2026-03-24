@@ -7,7 +7,8 @@ public class ServerManager {
 
     private static AppiumDriverLocalService service;
 
-    public static synchronized void startServer() {
+    public static synchronized void startServer()
+    {
 
         if (service == null || !service.isRunning()) {
             service = AppiumDriverLocalService.buildDefaultService();

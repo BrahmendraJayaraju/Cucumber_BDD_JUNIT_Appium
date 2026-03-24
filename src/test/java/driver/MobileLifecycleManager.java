@@ -5,10 +5,8 @@ import WebUtility.Utility;
 
 public class MobileLifecycleManager {
 
-
-
-    // ================= UNINSTALL APP =================
-    public static void uninstallAppBasedOnConfig() {
+    public static void uninstallAppBasedOnConfig()
+    {
 
         try {
 
@@ -16,13 +14,11 @@ public class MobileLifecycleManager {
 
             String platform = Utility.getValue(configPath, "platform");
 
-            if (platform == null || platform.isEmpty()) {
-                platform = Utility.getValue(configPath, "platform");
-            }
 
 
             String deviceId = Utility.getValue(configPath, "deviceid");
-            String localUrl = Utility.getValue(configPath, "localurl");
+            String bundleId = Utility.getValue(configPath, "bundleid");
+
 
             if (platform.equalsIgnoreCase("android"))
             {
@@ -36,7 +32,7 @@ public class MobileLifecycleManager {
                         Process process = Runtime.getRuntime().exec(
                                 "adb -s " + deviceId + " uninstall " + appPackage
                         );
-
+//wait until app is uninstalled from cmd
                         process.waitFor();
 
                         System.out.println("Android App Uninstalled (if installed)");
@@ -51,13 +47,13 @@ public class MobileLifecycleManager {
 
             else if (platform.equalsIgnoreCase("ios")) {
 
-                String bundleId = Utility.getValue(configPath, "bundleid");
+
 
 
                 Process process = Runtime.getRuntime().exec(
                         "xcrun simctl uninstall " + deviceId + " " + bundleId
                 );
-
+//wait until app is uninstalled from cmd
                 process.waitFor();
 
                 System.out.println("iOS App Uninstalled");
