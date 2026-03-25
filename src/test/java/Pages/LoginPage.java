@@ -1,20 +1,19 @@
 package Pages;
 
 import WebUtility.Utility;
+import WebUtility.Autoconstant;
 import io.appium.java_client.AppiumDriver;
 
 
 
-public class LoginPage extends Utility {
+public class LoginPage extends Utility implements Autoconstant{
 
 
-    String configPath = System.getProperty("user.dir") + "/testenvironment.properties";
+
 
     String platform = Utility.getValue(configPath, "platform");
 
-    public static String objectRepologin = "./Locators/login.properties";
 
-    public static String logindata = "./TestData/loginTestData.properties";
 
     public static String usernamexpathandroid = Utility.getValue(objectRepologin, "usernameandroid");
     public static String usernamexpathios = Utility.getValue(objectRepologin, "usernameios");

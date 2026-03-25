@@ -76,6 +76,7 @@ public class DriverFactory {
                 options.setAutomationName(AutomationName.IOS_XCUI_TEST);
                 //ios working opposite
                 options.setNoReset(true);
+                options.setCapability("useNewWDA", false);
 
 
 
