@@ -44,184 +44,87 @@ public class Utility {
 
     }
 
+
+    public By getLocator(String locatorType, String value)
+    {
+
+        switch (locatorType.toLowerCase())
+        {
+
+            case "xpath":
+                return AppiumBy.xpath(value);
+
+            case "id":
+                return AppiumBy.id(value);
+
+            case "accessibilityid":
+                return AppiumBy.accessibilityId(value);
+
+            case "classname":
+                return AppiumBy.className(value);
+
+            case "androiduiautomator":
+                return AppiumBy.androidUIAutomator(value);
+
+            case "iospredicate":
+                return AppiumBy.iOSNsPredicateString(value);
+
+            case "iosclasschain":
+                return AppiumBy.iOSClassChain(value);
+
+            default:
+                throw new IllegalArgumentException("Invalid locator type: " + locatorType);
+        }
+    }
+
     public void waitForElement(String locatorType, String value) {
+
+        By locator = getLocator(locatorType, value);
+
         try {
-            switch (locatorType.toLowerCase()) {
-                case "id":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id(value)));
-                    break;
-
-                case "accessibilityid":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId(value)));
-                    break;
-
-                case "xpath":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.xpath(value)));
-                    break;
-
-                case "classname":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.className(value)));
-                    break;
-
-                case "androiduiautomator":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.androidUIAutomator(value)));
-                    break;
-
-                case "iospredicate":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.iOSNsPredicateString(value)));
-                    break;
-
-                case "iosclasschain":
-                    wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.iOSClassChain(value)));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-            }
+            wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
         } catch (Exception e) {
-            System.out.println("Wait failed for element: " + value);
+            throw new RuntimeException("Element not visible: " + value);
         }
     }
 
 
-
     public void clickElement(String locatorType, String value) {
 
-        waitForElement(locatorType, value);
         try {
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
 
+            By locator = getLocator(locatorType, value);
+            waitForElement(locatorType, value); // reuse existing wait
 
-                    driver.findElement(AppiumBy.xpath(value)).click();
-                    break;
+            driver.findElement(locator).click();
 
-                case "id":
-
-                    driver.findElement(AppiumBy.id(value)).click();
-                    break;
-
-                case "accessibilityid":
-
-                    driver.findElement(AppiumBy.accessibilityId(value)).click();
-                    break;
-
-                case "classname":
-
-                    driver.findElement(AppiumBy.className(value)).click();
-                    break;
-
-                case "androiduiautomator":
-
-                    driver.findElement(AppiumBy.androidUIAutomator(value)).click();
-                    break;
-
-                case "iospredicate":
-
-                    driver.findElement(AppiumBy.iOSNsPredicateString(value)).click();
-                    break;
-
-                case "iosclasschain":
-
-                    driver.findElement(AppiumBy.iOSClassChain(value)).click();
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-            }
         } catch (Exception e) {
             System.out.println("Unable to click element: " + e.getMessage());
         }
     }
 
-
-
     public void enterText(String locatorType, String value, String text) {
 
         try {
-            waitForElement(locatorType, value);
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
+            By locator = getLocator(locatorType, value);
 
-                    driver.findElement(AppiumBy.xpath(value)).sendKeys(text);
-                    break;
+            waitForElement(locatorType, value);   // reuse your method
+            driver.findElement(locator).sendKeys(text);
 
-                case "id":
-
-                    driver.findElement(AppiumBy.id(value)).sendKeys(text);
-                    break;
-
-                case "accessibilityid":
-
-                    driver.findElement(AppiumBy.accessibilityId(value)).sendKeys(text);
-                    break;
-
-                case "classname":
-
-                    driver.findElement(AppiumBy.className(value)).sendKeys(text);
-                    break;
-
-                case "androiduiautomator":
-
-                    driver.findElement(AppiumBy.androidUIAutomator(value)).sendKeys(text);
-                    break;
-
-                case "iospredicate":
-
-                    driver.findElement(AppiumBy.iOSNsPredicateString(value)).sendKeys(text);
-                    break;
-
-                case "iosclasschain":
-
-                    driver.findElement(AppiumBy.iOSClassChain(value)).sendKeys(text);
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-            }
         } catch (Exception e) {
             System.out.println("Unable to enter text: " + e.getMessage());
         }
     }
 
-    //done a ios
+
     public boolean isElementDisplayed(String locatorType, String value) {
 
         try {
-            waitForElement(locatorType, value);
-            switch (locatorType.toLowerCase()) {
-                case "id":
+            By locator = getLocator(locatorType, value);
 
-                    return driver.findElement(AppiumBy.id(value)).isDisplayed();
+            waitForElement(locatorType, value);   // reuse your wait
+            return driver.findElement(locator).isDisplayed();
 
-                case "accessibilityid":
-
-                    return driver.findElement(AppiumBy.accessibilityId(value)).isDisplayed();
-
-                case "xpath":
-
-                    return driver.findElement(AppiumBy.xpath(value)).isDisplayed();
-
-                case "classname":
-
-                    return driver.findElement(AppiumBy.className(value)).isDisplayed();
-
-                case "androiduiautomator":
-
-                    return driver.findElement(AppiumBy.androidUIAutomator(value)).isDisplayed();
-
-                case "iospredicate":
-
-                    return driver.findElement(AppiumBy.iOSNsPredicateString(value)).isDisplayed();
-
-                case "iosclasschain":
-
-                    return driver.findElement(AppiumBy.iOSClassChain(value)).isDisplayed();
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-                    return false;
-            }
         } catch (Exception e) {
             return false;
         }
@@ -229,37 +132,15 @@ public class Utility {
 
     //done a ios
     public String getAttribute(String locatorType, String value, String attribute) {
+
         try {
+            By locator = getLocator(locatorType, value);
+
             waitForElement(locatorType, value);
+            return driver.findElement(locator).getAttribute(attribute);
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    return driver.findElement(AppiumBy.xpath(value)).getAttribute(attribute);
-
-                case "id":
-                    return driver.findElement(AppiumBy.id(value)).getAttribute(attribute);
-
-                case "accessibilityid":
-                    return driver.findElement(AppiumBy.accessibilityId(value)).getAttribute(attribute);
-
-                case "classname":
-                    return driver.findElement(AppiumBy.className(value)).getAttribute(attribute);
-
-                case "androiduiautomator":
-                    return driver.findElement(AppiumBy.androidUIAutomator(value)).getAttribute(attribute);
-
-                case "iospredicate":
-                    return driver.findElement(AppiumBy.iOSNsPredicateString(value)).getAttribute(attribute);
-
-                case "iosclasschain":
-                    return driver.findElement(AppiumBy.iOSClassChain(value)).getAttribute(attribute);
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-                    return null;
-            }
         } catch (Exception e) {
-            return null;
+            throw new RuntimeException("Failed to get attribute: " + attribute + " for element: " + value);
         }
     }
 
@@ -267,43 +148,11 @@ public class Utility {
     //done a ios
     public void singleTap(String locatorType, String value, int sequenceNumber, int pauseTime) {
         try {
+            By locator = getLocator(locatorType, value);
+
             waitForElement(locatorType, value);
 
-            WebElement element = null;
-
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
-
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-                    return;
-            }
+            WebElement element = driver.findElement(locator);
 
             Point location = element.getLocation();
             Dimension size = element.getSize();
@@ -329,41 +178,13 @@ public class Utility {
 
     //done a ios
     public void clearText(String locatorType, String value) {
+
         try {
+            By locator = getLocator(locatorType, value);
+
             waitForElement(locatorType, value);
+            driver.findElement(locator).clear();
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    driver.findElement(AppiumBy.xpath(value)).clear();
-                    break;
-
-                case "id":
-                    driver.findElement(AppiumBy.id(value)).clear();
-                    break;
-
-                case "accessibilityid":
-                    driver.findElement(AppiumBy.accessibilityId(value)).clear();
-                    break;
-
-                case "classname":
-                    driver.findElement(AppiumBy.className(value)).clear();
-                    break;
-
-                case "androiduiautomator":
-                    driver.findElement(AppiumBy.androidUIAutomator(value)).clear();
-                    break;
-
-                case "iospredicate":
-                    driver.findElement(AppiumBy.iOSNsPredicateString(value)).clear();
-                    break;
-
-                case "iosclasschain":
-                    driver.findElement(AppiumBy.iOSClassChain(value)).clear();
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-            }
         } catch (Exception e) {
             System.out.println("Unable to clear text: " + e.getMessage());
         }
@@ -371,40 +192,14 @@ public class Utility {
 
 
 
-    public String getText(String locatorType, String value)
-    {
+    public String getText(String locatorType, String value) {
+
         try {
+            By locator = getLocator(locatorType, value);
+
             waitForElement(locatorType, value);
+            return driver.findElement(locator).getText();
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    return driver.findElement(AppiumBy.xpath(value)).getText();
-
-                case "id":
-                    return driver.findElement(AppiumBy.id(value)).getText();
-
-                case "accessibilityid":
-
-                    System.out.println("camehere");
-
-                    return driver.findElement(AppiumBy.accessibilityId(value)).getText();
-
-                case "classname":
-                    return driver.findElement(AppiumBy.className(value)).getText();
-
-                case "androiduiautomator":
-                    return driver.findElement(AppiumBy.androidUIAutomator(value)).getText();
-
-                case "iospredicate":
-                    return driver.findElement(AppiumBy.iOSNsPredicateString(value)).getText();
-
-                case "iosclasschain":
-                    return driver.findElement(AppiumBy.iOSClassChain(value)).getText();
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-                    return null;
-            }
         } catch (Exception e) {
             return null;
         }
@@ -412,44 +207,13 @@ public class Utility {
 
 
     public void clickUsingActions(String locatorType, String value) {
+
         try {
             waitForElement(locatorType, value);
 
-            WebElement element = null;
+            By locator= getLocator(locatorType, value);
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
-
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-                    return;
-            }
+            WebElement element =driver.findElement(locator);
 
             Actions actions = new Actions(driver);
             actions.moveToElement(element).click().perform();
@@ -465,41 +229,9 @@ public class Utility {
         try {
             waitForElement(locatorType, value);
 
-            WebElement element = null;
+             By locator= getLocator(locatorType, value);
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
-
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type: " + locatorType);
-                    return;
-            }
+            WebElement element=driver.findElement(locator);
 
             Point location = element.getLocation();
             Dimension size = element.getSize();
@@ -541,41 +273,10 @@ public class Utility {
         try {
             waitForElement(locatorType, value);
 
-            WebElement element = null;
+             By locator= getLocator(locatorType, value);
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
+            WebElement element=driver.findElement(locator);
 
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type");
-                    return;
-            }
 
             int elementX = element.getRect().x;
             int elementY = element.getRect().y;
@@ -628,44 +329,13 @@ public class Utility {
 
         try {
 
-
             waitForElement(locatorType, value);
 
-            WebElement element = null;
+            // Reuse common method
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
+            By locator= getLocator(locatorType, value);
 
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type");
-                    return;
-            }
+            WebElement element=driver.findElement(locator);
 
             int elementX = element.getRect().x;
             int elementY = element.getRect().y;
@@ -841,7 +511,7 @@ public class Utility {
                     return;
                 }
 
-                Thread.sleep(700);
+
             }
 
             System.out.println("Element not found after max swipe attempts");
@@ -1005,52 +675,29 @@ public class Utility {
     }
 
 
-    public void openKeyboard(String locatorType, String value) {
-        try {
-            WebElement element = null;
+    public void openKeyboard(String locatorType, String value)
+    {
+        try
+        {
+            By locator = getLocator(locatorType, value);
 
-            switch (locatorType.toLowerCase()) {
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type");
-                    return;
-            }
+            waitForElement(locatorType, value);   // reuse your method
+            WebElement element = driver.findElement(locator);
 
             element.click();
 
-            if (driver instanceof AndroidDriver) {
+
+            if (driver instanceof AndroidDriver)
+            {
                 System.out.println("Android keyboard opened");
-            } else if (driver instanceof IOSDriver) {
+            }
+            else if (driver instanceof IOSDriver)
+            {
                 System.out.println("iOS keyboard opened");
             }
-        } catch (Exception e) {
+        }
+        catch (Exception e)
+        {
             e.printStackTrace();
         }
     }
@@ -1071,66 +718,17 @@ public class Utility {
     }
 
 
+
     public void clearNotifications(String locatorType, String value) {
         try {
-            By locator = null;
+
+            By locator = getLocator(locatorType, value);
+
             waitForElement(locatorType, value);
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    locator = AppiumBy.xpath(value);
-                    break;
+            driver.findElement(locator).click();
 
-                case "id":
-                    locator = AppiumBy.id(value);
-                    break;
-
-                case "accessibilityid":
-                    locator = AppiumBy.accessibilityId(value);
-                    break;
-
-                case "classname":
-                    locator = AppiumBy.className(value);
-                    break;
-
-                case "androiduiautomator":
-                    locator = AppiumBy.androidUIAutomator(value);
-                    break;
-
-                case "iospredicate":
-                    locator = AppiumBy.iOSNsPredicateString(value);
-                    break;
-
-                case "iosclasschain":
-                    locator = AppiumBy.iOSClassChain(value);
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type");
-                    return;
-            }
-
-            if (driver instanceof AndroidDriver) {
-                AndroidDriver androidDriver = (AndroidDriver) driver;
-
-
-                Thread.sleep(2000);
-
-                androidDriver.findElement(locator).click();
-
-                System.out.println("Android notifications cleared");
-            } else if (driver instanceof IOSDriver) {
-                IOSDriver iosDriver = (IOSDriver) driver;
-
-
-                Thread.sleep(2000);
-
-                iosDriver.findElement(locator).click();
-
-                System.out.println("iOS notifications cleared");
-            } else {
-                System.out.println("Unsupported platform");
-            }
+            System.out.println("Notifications cleared");
 
         } catch (Exception e) {
             System.out.println("No clear notification button visible");
@@ -1204,41 +802,11 @@ public class Utility {
 
     public void longPress(String locatorType, String value, int holdTime) {
         try {
-            WebElement element = null;
 
-            switch (locatorType.toLowerCase()) {
-                case "xpath":
-                    element = driver.findElement(AppiumBy.xpath(value));
-                    break;
+            By locator = getLocator(locatorType, value);
+            waitForElement(locatorType, value);
 
-                case "id":
-                    element = driver.findElement(AppiumBy.id(value));
-                    break;
-
-                case "accessibilityid":
-                    element = driver.findElement(AppiumBy.accessibilityId(value));
-                    break;
-
-                case "classname":
-                    element = driver.findElement(AppiumBy.className(value));
-                    break;
-
-                case "androiduiautomator":
-                    element = driver.findElement(AppiumBy.androidUIAutomator(value));
-                    break;
-
-                case "iospredicate":
-                    element = driver.findElement(AppiumBy.iOSNsPredicateString(value));
-                    break;
-
-                case "iosclasschain":
-                    element = driver.findElement(AppiumBy.iOSClassChain(value));
-                    break;
-
-                default:
-                    System.out.println("Invalid locator type");
-                    return;
-            }
+            WebElement element = driver.findElement(locator);
 
             int centerX = element.getLocation().getX() + element.getSize().getWidth() / 2;
             int centerY = element.getLocation().getY() + element.getSize().getHeight() / 2;
@@ -1314,7 +882,8 @@ public class Utility {
     }
 
 
-    public void putAppInBackground(int seconds) {
+    public void putAppInBackground(int seconds)
+    {
         {
 
             try {
@@ -1405,18 +974,12 @@ public class Utility {
 
 
     public void closeapp() {
-        if (driver instanceof AndroidDriver) {
-
+        try {
             driver.quit();
-
-        } else if (driver instanceof IOSDriver) {
-
-            driver.quit();
-
-            System.out.println("closeapp worked");
+            System.out.println("App closed successfully");
+        } catch (Exception e) {
+            System.out.println("Failed to close app: " + e.getMessage());
         }
-
-
     }
 
 
@@ -1473,58 +1036,100 @@ public class Utility {
 
 
 
+
+
     // after switching we need to write normal methods and normal browser xpaths to handle
 // application chrome version is also important if you are  using your local chrome
     // incase if it is not working we can launch chrome from cmd and handle webview
     //ios is diffrent need to check
+
     public void switchtowebview(String value) {
+        try {
 
-        if (driver instanceof AndroidDriver) {
+            Set<String> contexts;
 
-            ((AndroidDriver) driver).context(value);
+            if (driver instanceof AndroidDriver) {
 
-        } else if (driver instanceof IOSDriver) {
+                AndroidDriver androidDriver = (AndroidDriver) driver;
+                contexts = androidDriver.getContextHandles();
 
-            ((IOSDriver) driver).context(value);
+                System.out.println("Available contexts: " + contexts);
 
+                if (contexts.contains(value)) {
+                    androidDriver.context(value);
+                }
 
+            } else if (driver instanceof IOSDriver) {
+
+                IOSDriver iosDriver = (IOSDriver) driver;
+                contexts = iosDriver.getContextHandles();
+
+                System.out.println("Available contexts: " + contexts);
+
+                if (contexts.contains(value)) {
+                    iosDriver.context(value);
+                }
+
+            } else {
+                throw new RuntimeException("Unsupported driver type");
+            }
+
+            System.out.println("Switched to context: " + value);
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to switch context: " + e.getMessage());
         }
-
     }
+
 
     public void navigatebacktonativeview() {
 
-        driver.navigate().back();
 
-    }
 
-    public Set<String> getAllContexts()
-    {
-        Set<String> contexts = null;
-
-        if (driver instanceof AndroidDriver) {
-
-            contexts = ((AndroidDriver) driver).getContextHandles();
-
-        } else if (driver instanceof IOSDriver) {
-
-            contexts = ((IOSDriver) driver).getContextHandles();
+        try {
+            driver.navigate().back();
+            System.out.println("Native back ");
 
         }
-
-        return contexts;
-    }
-
-
-
-
-
-
-        public void compare(String actual, String expected)
+        catch (Exception e)
         {
-            Assert.assertEquals("Error message mismatch", expected, actual);
+            System.out.println("Failed to navigate: " + e.getMessage());
         }
 
+    }
+
+    public Set<String> getAllContexts() {
+
+        try {
+            Set<String> contexts;
+
+            if (driver instanceof AndroidDriver) {
+
+                contexts = ((AndroidDriver) driver).getContextHandles();
+
+            } else if (driver instanceof IOSDriver) {
+
+                contexts = ((IOSDriver) driver).getContextHandles();
+
+            } else {
+                throw new RuntimeException("Unsupported driver type");
+            }
+
+            System.out.println("Available contexts: " + contexts);
+            return contexts;
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to get contexts: " + e.getMessage());
+        }
+    }
+
+
+
+
+    public void compare(String actual, String expected)
+    {
+        Assert.assertEquals("Error message mismatch", expected, actual);
+    }
 
 }
 
