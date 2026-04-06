@@ -16,6 +16,8 @@ public class LoginPage extends Utility implements Autoconstant{
 
 
     public static String usernamexpathandroid = Utility.getValue(objectRepologin, "usernameandroid");
+
+
     public static String usernamexpathios = Utility.getValue(objectRepologin, "usernameios");
 
     public static String passwordxpathandroid = Utility.getValue(objectRepologin, "passwordandroid");

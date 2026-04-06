@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="21nd commit">
+    <list default="true" id="9d36f914-8e73-4f90-ac2a-cf2aecd9c79a" name="Changes" comment="22nd commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/WebUtility/Autoconstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebUtility/Autoconstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/WebUtility/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/WebUtility/Utility.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/stepdefinitions/LoginStep.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/stepdefinitions/LoginStep.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testenvironment.properties" beforeDir="false" afterPath="$PROJECT_DIR$/testenvironment.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <recent name="stepdefinitions" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Runner">
+  <component name="RunManager" selected="Cucumber Java.Scenario: Login with locked user">
     <configuration name="Feature: swaglabloginTest" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/src/test/resources/swaglabs/swaglabloginTest.feature" />
@@ -181,9 +180,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Scenario: Login with locked user" />
         <item itemvalue="JUnit.Runner" />
         <item itemvalue="Cucumber Java.Scenario: Login with valid user" />
-        <item itemvalue="Cucumber Java.Scenario: Login with locked user" />
         <item itemvalue="Cucumber Java.Scenario: Login with multiple users" />
         <item itemvalue="Cucumber Java.Feature: swaglabloginTest" />
       </list>
@@ -438,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1774414872907</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="22nd commit">
+      <option name="closed" value="true" />
+      <created>1774496525895</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1774496525896</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -474,7 +481,8 @@
     <MESSAGE value="19nd commit" />
     <MESSAGE value="20nd commit" />
     <MESSAGE value="21nd commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="21nd commit" />
+    <MESSAGE value="22nd commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="22nd commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

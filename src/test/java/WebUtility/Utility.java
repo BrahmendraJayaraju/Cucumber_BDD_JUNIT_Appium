@@ -113,6 +113,7 @@ public class Utility {
 
         } catch (Exception e) {
             System.out.println("Unable to enter text: " + e.getMessage());
+            Assert.fail();
         }
     }
 
